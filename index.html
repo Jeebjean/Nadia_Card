@@ -46,9 +46,8 @@
                         </ul>
 
                         <ul class="candidates-profile-social-icons list-inline mb-0">
-                            <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-facebook"></i></a></li>
-
-                            <li class="list-inline-item"><a href="#" class=""><i class="mdi mdi-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.instagram.com/dianastore26/" class=""><i
+                                        class="mdi mdi-instagram"></i></a></li>
                             <li class="list-inline-item"><a href="mailto:houndoclados@gmail.com" class=""><i
                                         class="mdi mdi-google-plus"></i></a>
                             </li>
@@ -74,7 +73,8 @@
 
                             <li class=" mr-3">
                                 <a href="tel:+22967127856" class="text-muted f-15 mb-0"><i
-                                        class="mdi mdi-cellphone-iphone mr-2"></i><strong>Tel: </strong>67 12 78 56</a>
+                                        class="mdi mdi-cellphone-iphone mr-2"></i><strong>Tel: </strong>+229 67 12 78
+                                    56</a>
                             </li>
 
                             <!--
@@ -97,8 +97,15 @@
                             <hr>
 
                             <li class=" mr-3">
-                                <a href="" class="text-muted f-15 mb-0"><i
-                                        class="mdi mdi-map-marker mr-2"></i><strong>Adresse: </strong>Cotonou, BENIN</a>
+                                <a href="https://maps.app.goo.gl/yTWbvu67A4mJkHUv9?g_st=i"
+                                    class="text-muted f-15 mb-0"><i class="mdi mdi-map-marker mr-2"></i><strong>Adresse:
+                                    </strong>Cotonou, BENIN</a>
+                            </li>
+
+                            <hr>
+
+                            <li class=" mr-3">
+                                <button id="save-button">Sauvegarder</button>
                             </li>
 
                         </ul>
@@ -309,10 +316,39 @@
             padding-top: 80px;
             position: relative;
         }
+
+        button {
+            border: 1px solid rgba(128, 128, 128, 0.492);
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 10px;
+        }
     </style>
 
     <script type="text/javascript">
+        // Define the vCard fields
+        var vcardString = 'BEGIN:VCARD\n';
+        vcardString += 'VERSION:3.0\n';
+        vcardString += 'N:Houndo;Nadia;;;\n';
+        vcardString += 'FN:Houndo Nadia\n';
+        vcardString += 'TEL;TYPE=home,voice:+229 67 12 78 56\n';
+        vcardString += 'EMAIL:houndoclados@gmail.com\n';
+        vcardString += 'TITLE:DG DianaStore\n';
+        // vcardString += 'URL:https://www.jeeb.info\n';
+        vcardString += 'END:VCARD\n';
 
+        // Attach an event handler to the save button
+        document.getElementById('save-button').addEventListener('click', function () {
+            // Create an anchor element with a data URI that contains the vCard string
+            var a = document.createElement('a');
+            a.href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcardString);
+
+            // Set the download attribute to the desired filename
+            a.download = 'contact.vcf';
+
+            // Click the anchor element to trigger the download
+            a.click();
+        });
     </script>
 </body>
 
